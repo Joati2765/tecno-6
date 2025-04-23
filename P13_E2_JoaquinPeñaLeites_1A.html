@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Calculadora</title>
+	
+	<style type="text/css"> 
+		/* Estilo general del cuerpo del HTML*/
+		body {color: #3a53ca; background-color: #ececec; font-family: "courier new"; margin-top:50px; margin-left:50px;};
+	</style>
+
+	
+	
+	<script>
+		function multiplicar(){
+			// declaramos una varible para gestionar los errores encadenados y la establecemos a cero
+			var error=0;
+
+			// asignamos en dos variables los valores de las cajas de texto para poder operar de forma mas sencilla
+			m1 = document.getElementById("multiplicando").value;
+			m2 = document.getElementById("multiplicador").value;
+	
+			// validamos que los operandos no esten vacios
+			if (m1=='' && error==0)
+			{
+				alert("El multiplicando es un dato obligatorio");
+				m1.focus();
+				error=1;
+			}
+			if (m2=='' && error==0)
+			{
+				alert("El multiplicador es un dato obligatorio");
+				m2.focus();
+				error=1;
+			}
+
+			// validamos que los operandos tengan valor numerico
+			if (!/^([0-9])*$/.test(m1))
+			{
+      			alert("El valor " + m1 + " no es un número");
+				m1.focus();
+				error=1;
+	  		}
+			if (!/^([0-9])*$/.test(m2))
+			{
+      			alert("El valor " + m2 + " no es un número");
+				m2.focus();
+				error=1;
+	  		}
+			
+			// si no se ha producido ningun error, ralizamos la operacion
+			if (error==0)
+			{
+				r = m1*m2;
+				// asignamos el valor obtenido a la caja de texto resultado
+				document.getElementById("resultado").value = r;
+			}
+		}
+	</script>
+	
+</head>
+
+<body>
+
+<h1>Mi primera calculadora</h1>
+
+<table cellpadding="10" style="border: 1px #666666 ridge; width: 400px; text-align: center; background-color: #f6f8d8;">
+	<tr>
+		<td><a href="javascript:multiplicar();">[Calcular]</a></td>
+	</tr>
+	<tr>
+		<td>
+			<form id="multiplicar">
+			  <input type="text" id="multiplicando" maxlength="3" size="3" value=0> x
+			  <input type="text" id="multiplicador" maxlength="3" size="3" value=0> =
+			  <input type="text" id="resultado" maxlength="9" size="10">
+			</form>
+		</td>
+	</tr>
+</table>
+
+
+</body>
+</html>
+
+

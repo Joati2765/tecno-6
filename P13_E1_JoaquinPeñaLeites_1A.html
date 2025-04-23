@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Dibujando formas en HTML 5</title>
+
+<script type="application/javascript">
+function circulo() {
+	//creamos una variable para acceder al canvas de forma mas sencilla
+	var canvas = document.getElementById("micanvas");
+
+	//utilizamos el objeto de dibujo 2d
+	var circulo = canvas.getContext("2d");
+	//para centrar el circulo, calculamos 
+	//  la posicion del punto medio del canvas
+	var posicionX = canvas.width / 2;
+    var posicionY = canvas.height / 2;
+	//establecemos el valor del radio del circulo
+    var radio = 70;
+
+	//iniciamos las funciones de dibujo del circulo, 
+	//  dando la coordenada X e Y del centro, asi como el radio
+    circulo.beginPath();
+    circulo.arc(posicionX, posicionY, radio, 0, 2 * Math.PI, false);
+	//establecemos un color de relleno, y lo rellenamos
+    circulo.fillStyle = "rgb(0,255,0)";
+    circulo.fill();
+}
+
+function cuadrado(coordx,coordy) {
+	//creamos una variable para acceder al canvas de forma mas sencilla
+	var canvas = document.getElementById("micanvas");
+
+	//utilizamos el objeto de dibujo 2d
+	var cuadrado = canvas.getContext("2d");
+	//establecemos un color de relleno
+	cuadrado.fillStyle = "rgb(255,255,0)";
+	
+	//llamamos a la funcion que dibuja rectangulos:
+	// pasamos las coordenadas como parametros de la funcion: coordx, coordy
+	// establecemos el valor del ancho y alto del rectangulo: 100, 100
+	cuadrado.fillRect (coordx, coordy, 100, 100);
+}
+
+</script>
+</head>
+
+<body onload="circulo();">
+
+<canvas id="micanvas" width="300" height="300" 
+	style="background-color:#fafafa;"></canvas>
+
+<br>
+<a href="javascript:cuadrado(100,100);">[Dibujar cuadrado]</a>
+
+</body>
+
+</html>
+
